@@ -1,36 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const masukanKota = document.getElementById('masukan-kota');
-    const tombolCari = document.getElementById('tombol-cari');
-    const tampilanCuaca = document.getElementById('tampilan-cuaca');
-    const pesanError = document.getElementById('pesan-error');
+    const masukanKota = document.getElementById('masukan-kota');// ID tetap
+    const tombolCari = document.getElementById('tombol-cari');     
+    const tampilanCuaca = document.getElementById('tampilan-cuaca'); 
+    const pesanError = document.getElementById('pesan-error');       
 
-    // API KEY
-    const API_KEY = 'e553a1b0e58445cc83934445252306';
-    // URL API Website untuk cuaca saat ini
-    const URL_WEATHERAPI = 'https://api.weatherapi.com/v1/current.json';
+    const KUNCI_API = '62607c296e95b49b218cb18f2f02f1f1';
+    const URL_WEB = 'https://api.openweathermap.org/data/2.5/weather';
 
     async function dapatkanDataCuaca(kota) {
         pesanError.textContent = ''; 
         tampilanCuaca.innerHTML = '<p class="teks-placeholder">Mencari data...</p>'; 
 
         try {
-            // Permintaan ke WeatherAPI.com
-            const response = await fetch(`${URL_WEATHERAPI}?key=${API_KEY}&q=${kota}&lang=id`);
+            const response = await fetch(`${URL_WEB}?q=${kota}&units=metric&lang=id&appid=${KUNCI_API}`);
 
             if (!response.ok) {
-                // Tangani error HTTP
-                const errorData = await response.json(); 
-                let errorMessageText = 'Gagal mengambil data cuaca.';
-
-                if (response.status === 400 && errorData.error && errorData.error.message) {
                 
-                    errorMessageText = `Kesalahan: ${errorData.error.message}`;
-                } else if (response.status === 403) {
-                    errorMessageText = 'API Key tidak valid atau ada masalah otentikasi.';
+                if (response.status === 404) {
+                    throw new Error('Kota tidak ditemukan.');
+                } else if (response.status === 401) {
+                    throw new Error('API Key tidak valid atau ada masalah otentikasi.');
                 } else {
-                    errorMessageText = `Terjadi kesalahan: ${response.statusText}`;
+                    throw new Error(`Terjadi kesalahan: ${response.statusText}`);
                 }
-                throw new Error(errorMessageText);
             }
 
             const data = await response.json();
@@ -44,23 +36,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function tampilkanDataCuaca(data) {
-        tampilanCuaca.innerHTML = '';
+        tampilanCuaca.innerHTML = ''; 
 
-        
-        if (!data || !data.current || !data.location) {
-            pesanError.textContent = 'Data cuaca tidak lengkap atau format tidak sesuai.';
+        if (!data || !data.main || !data.weather || !data.name) {
+            pesanError.textContent = 'Data cuaca tidak lengkap.';
             return;
         }
 
-        const kota = data.location.name;
-        const negara = data.location.country;
-        const suhu = Math.round(data.current.temp_c); 
-        const deskripsi = data.current.condition.text;
-        const kelembaban = data.current.humidity;
-        const kecepatanAngin = data.current.wind_kph; 
+        const kota = data.name;
+        const negara = data.sys.country;
+        const suhu = Math.round(data.main.temp); 
+        const deskripsi = data.weather[0].description;
+        const kelembaban = data.main.humidity;
+        const kecepatanAngin = data.wind.speed; 
 
-        // Ikon cuaca dari WeatherAPI.com
-        const urlIkon = data.current.condition.icon; 
+
+        const kodeIkonCuaca = data.weather[0].icon;
+        const urlIkon = `http://openweathermap.org/img/wn/${kodeIkonCuaca}@2x.png`;
 
         const htmlCuaca = `
             <div class="info-cuaca">
@@ -76,7 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="item-detail">
                         <i class="fas fa-wind"></i>
-                        <p>${kecepatanAngin} km/j</p> <p>Kecepatan Angin</p>
+                        <p>${kecepatanAngin} m/s</p>
+                        <p>Kecepatan Angin</p>
                     </div>
                 </div>
             </div>
