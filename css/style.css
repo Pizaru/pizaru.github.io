@@ -1,0 +1,373 @@
+/* General Styling */
+:root {
+    --warna-utama: #3498db; 
+    --warna-sekunder: #2c3e50; 
+    --warna-aksen: #e74c3c; 
+    --warna-teks: #333;
+    --latar-terang: #f8f9fa;
+    --latar-gelap: #2c3e50;
+    --putih: #fff;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: var(--warna-teks);
+    background-color: var(--latar-terang);
+    scroll-behavior: smooth; 
+}
+
+.wadah {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+h1, h2, h3 {
+    color: var(--warna-sekunder);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+/* Buttons/tombol */
+.tombol {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.tombol-utama {
+    background-color: var(--latar-gelap);
+    color: var(--putih);
+    border: 1px solid var(--warna-utama);
+}
+
+.tombol-utama:hover {
+    background-color: #2980b9;
+    border-color: #080808;
+}
+
+.tombol-sekunder {
+    background-color: var(--warna-sekunder);
+    color: var(--putih);
+    border: 1px solid var(--warna-sekunder);
+    margin: 5px;
+}
+
+.tombol-sekunder:hover {
+    background-color: #34495e;
+    border-color: #34495e;
+}
+
+/* Navbar */
+.bilah-navigasi {
+    background-color: var(--warna-sekunder);
+    color: var(--putih);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.bilah-navigasi .wadah {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bilah-navigasi .logo {
+    margin: 0;
+    font-size: 1.8em;
+    color: var(--putih);
+}
+
+.bilah-navigasi .tautan-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.bilah-navigasi .tautan-nav li {
+    margin-left: 25px;
+}
+
+.bilah-navigasi .tautan-nav a {
+    color: var(--putih);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.bilah-navigasi .tautan-nav a:hover {
+    color: var(--warna-utama);
+}
+
+/* Mobile Menu  */
+.tombol-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.tombol-menu .garis {
+    width: 25px;
+    height: 3px;
+    background-color: var(--putih);
+    margin: 4px 0;
+    transition: 0.3s;
+}
+
+/* User */
+.bagian-hero {
+    background-color: var(--warna-utama);
+    color: var(--putih);
+    text-align: center;
+    padding: 100px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh; /* setting minimal height */
+}
+
+.bagian-hero .foto-profil {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--putih);
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.bagian-hero h2 {
+    color: var(--putih);
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.bagian-hero .slogan {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+/* Sections */
+section {
+    padding: 80px 0;
+}
+
+section:nth-child(even) {
+    background-color: var(--latar-terang);
+}
+
+section h2 {
+    font-size: 2.2em;
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--warna-utama);
+    border-radius: 2px;
+}
+
+/* About Me/tentang saya */
+.tentang-saya p {
+    text-align: justify;
+    max-width: 800px;
+    margin: 0 auto 15px auto;
+}
+
+/* Projects Section */
+.grid-proyek {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.item-proyek {
+    background-color: var(--putih);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.item-proyek:hover {
+    transform: translateY(-5px);
+}
+
+.item-proyek img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.item-proyek h3 {
+    font-size: 1.5em;
+    margin: 20px 0 10px;
+    color: var(--warna-sekunder);
+}
+
+.item-proyek p {
+    padding: 0 20px;
+    font-size: 0.95em;
+    color: #666;
+}
+
+.tautan-proyek {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tautan-proyek .tombol {
+    margin: 5px;
+}
+
+/* Skills Section */
+.bagian-keahlian {
+    background-color: var(--latar-gelap);
+    color: var(--putih);
+}
+
+.bagian-keahlian h2 {
+    color: var(--latar-gelap);
+}
+
+.bagian-keahlian h2::after {
+    background-color: var(--warna-utama);
+}
+
+.grid-keahlian {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.item-keahlian {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.item-keahlian:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.item-keahlian i {
+    color: var(--warna-utama);
+    margin-bottom: 10px;
+}
+
+.item-keahlian p {
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Contact Section */
+.bagian-kontak {
+    text-align: center;
+}
+
+.tautan-kontak {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tautan-kontak .tombol {
+    margin: 10px;
+    min-width: 150px;
+}
+
+
+/* Footer */
+footer {
+    background-color: var(--warna-sekunder);
+    color: var(--putih);
+    text-align: center;
+    padding: 25px 0;
+    margin-top: 50px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .bilah-navigasi .tautan-nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--warna-sekunder);
+        position: absolute;
+        top: 60px; /* Adjust based on navbar height */
+        left: 0;
+        padding: 20px 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .bilah-navigasi .tautan-nav.aktif { /* Class baru untuk menu aktif */
+        display: flex;
+    }
+
+    .bilah-navigasi .tautan-nav li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .tombol-menu {
+        display: flex;
+    }
+
+    .bagian-hero {
+        padding: 80px 20px;
+    }
+
+    .bagian-hero h2 {
+        font-size: 2em;
+    }
+
+    section {
+        padding: 50px 0;
+    }
+
+    section h2 {
+        font-size: 1.8em;
+    }
+
+    .grid-proyek, .grid-keahlian {
+        grid-template-columns: 1fr;
+    }
+
+    .tautan-kontak .tombol {
+        width: 80%; /* Make buttons wider on small screens */
+    }
+}

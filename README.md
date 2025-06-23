@@ -1,2 +1,0 @@
-# pizaru.github.io
-test
