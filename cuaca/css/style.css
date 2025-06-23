@@ -1,0 +1,179 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #000000, #ffffff); /* Background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #333;
+}
+
+.wadah-cuaca {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+}
+
+h1 {
+    color: #000000;
+    margin-bottom: 25px;
+    font-size: 2.2em;
+}
+
+.kotak-pencarian {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.kotak-pencarian input {
+    border: 1px solid #ccc;
+    padding: 12px 15px;
+    border-radius: 25px;
+    font-size: 1em;
+    flex-grow: 1;
+    margin-right: 10px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.kotak-pencarian input:focus {
+    border-color: #ffffff;
+}
+
+.kotak-pencarian button {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kotak-pencarian button:hover {
+    background-color: #1a7a91;
+    transform: translateY(-2px);
+}
+
+.kotak-pencarian button i {
+    margin: 0;
+}
+
+.tampilan-cuaca {
+    min-height: 200px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tampilan-cuaca .teks-placeholder {
+    font-style: italic;
+    color: #777;
+    font-size: 1.1em;
+}
+
+.info-cuaca {
+    animation: fadeIn 0.8s ease-out;
+}
+
+.info-cuaca h2 {
+    font-size: 2em;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.info-cuaca .suhu {
+    font-size: 3.5em;
+    font-weight: bold;
+    color: #e74c3c; 
+    margin: 10px 0;
+}
+
+.info-cuaca .deskripsi {
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    color: #555;
+    text-transform: capitalize;
+}
+
+.detail-cuaca {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.item-detail {
+    text-align: center;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.item-detail i {
+    font-size: 1.8em;
+    color: #2193b0;
+    margin-bottom: 5px;
+}
+
+.item-detail p {
+    margin: 0;
+}
+
+.pesan-error {
+    color: #e74c3c;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 0.95em;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .wadah-cuaca {
+        padding: 20px;
+        margin: 20px;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    .kotak-pencarian input {
+        padding: 10px 12px;
+    }
+    .kotak-pencarian button {
+        padding: 10px 15px;
+        font-size: 1em;
+    }
+    .info-cuaca .suhu {
+        font-size: 3em;
+    }
+    .info-cuaca .deskripsi {
+        font-size: 1.1em;
+    }
+    .detail-cuaca {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
